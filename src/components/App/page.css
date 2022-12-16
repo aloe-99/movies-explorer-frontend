@@ -1,0 +1,6 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  background-color: #202020;
+  font-family: "Inter", Arial, sans-serif;
+}

@@ -1,0 +1,28 @@
+.header {
+  display: flex;
+  align-items: center;
+  padding: 18px 70px;
+}
+
+.header__logo {
+  margin-right: 38px;
+}
+
+.header__link {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  text-decoration: none;
+  margin: 8px;
+}
+
+.header__link-btn {
+  margin-left: auto;
+}
+
+.header__profile-icon {
+  background-color: #313131;
+  border-radius: 50%;
+  padding: 7px;
+  margin-left: 8px;
+}
