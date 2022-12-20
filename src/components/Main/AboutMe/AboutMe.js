@@ -3,7 +3,7 @@ import photoPath from '../../../images/AboutMe/profile-photo.png';
 
 function AboutMe(props) {
   return (
-    <section className="section">
+    <section className="section student" id='student'>
       <div className="section__hr">
         <h3 className="section__title">Студент</h3>
       </div>

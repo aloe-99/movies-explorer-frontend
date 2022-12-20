@@ -1,3 +1,7 @@
+.student {
+  margin: 10px 70px;
+}
+
 .section__profile-text {
   display: flex;
   flex-direction: column;

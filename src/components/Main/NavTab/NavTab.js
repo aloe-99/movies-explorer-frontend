@@ -1,16 +1,10 @@
 function NavTab(props) {
   return (
-    <div className='section__cards-row'>
-      <div className='section__card'>
-        <a href='r.ru' className='section__text'>О проекте</a>
-      </div>
-      <div className='section__card'>
-        <a href='r.ru' className='section__text'>Технологии</a>
-      </div>
-      <div className='section__card'>
-        <a href='r.ru' className='section__text'>Студент</a>
-      </div>
-    </div>
+    <nav className='section__cards-row'>
+      <a href='#about' className='section__text section__card'>О проекте</a>
+      <a href='#techs' className='section__text section__card'>Технологии</a>
+      <a href='#student' className='section__text section__card'>Студент</a>
+    </nav>
   );
 }
 

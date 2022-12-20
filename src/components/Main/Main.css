@@ -1,6 +1,6 @@
 .section {
   margin: 10px 0;
-  padding: 100px 70px;
+  padding: 100px 0;
   color: #fff;
 }
 
@@ -64,24 +64,24 @@
   justify-content: center;
 }
 
-.section__card {
-  width: 96px;
-  background-color: #303030;
-  border-radius: 10px;
-  line-height: 2;
-  text-align: center;
-  margin: 0 5px;
-}
-
-.section__card_big {
-  padding: 22px 0;
-}
-
 .section__text {
   color: #fff;
   text-decoration: none;
   font-size: 14px;
   line-height: 1.42;
+}
+
+.section__card {
+  width: 96px;
+  background-color: #303030;
+  border-radius: 10px;
+  line-height: 2.5;
+  text-align: center;
+  margin: 0 5px;
+}
+
+.section__card_big {
+  padding: 10px 0;
 }
 
 .section__text_center {

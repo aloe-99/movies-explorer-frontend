@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   padding: 18px 70px;
+  width: 89%;
 }
 
 .header__logo {
@@ -18,6 +19,7 @@
 
 .header__link-btn {
   margin-left: auto;
+  margin-right: 0;
 }
 
 .header__profile-icon {

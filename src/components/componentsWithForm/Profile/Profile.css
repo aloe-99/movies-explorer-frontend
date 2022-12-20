@@ -1,0 +1,15 @@
+.form_profile {
+  padding-bottom: 0;
+  height: 482px;
+}
+
+.form__text-btn {
+  background-color: #202020;
+  border: none;
+  text-decoration: none;
+  margin: auto 0 16px;
+}
+
+.form__text-btn:last-child {
+  margin: 0 0 70px 0;
+}
