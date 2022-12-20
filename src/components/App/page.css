@@ -6,3 +6,19 @@
   font-family: "Inter", Arial, sans-serif;
   min-height: 100vh;
 }
+
+.link-dissolution {
+  transition: opacity 0.7s linear;
+}
+
+.link-dissolution:hover {
+  opacity: 0.7;
+}
+
+.btn-dissolution {
+  transition: opacity 0.7s linear;
+}
+
+.btn-dissolution:hover {
+  opacity: 0.8;
+}

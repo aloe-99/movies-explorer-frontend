@@ -5,7 +5,9 @@ import logoPath from '../../../images/Header/logo.svg';
 function Register(props) {
   return (
     <form className='form'>
-      <img className='form__logo' src={logoPath} alt='Логотип' />
+      <Link className='form__logo' to='/'>
+        <img src={logoPath} alt='Логотип' />
+      </Link>
       <h2 className='form__title'>Добро пожаловать!</h2>
       <label className='form__label' for='name'>Имя</label>
       <input className='form__input' type='text' id='name' />

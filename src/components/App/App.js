@@ -15,7 +15,7 @@ function App() {
   const location = useLocation();
 
   function checkLocationHeader(component) {
-    if (location.pathname === '/' || location.pathname === '/movies' || location.pathname === '/profile') {
+    if (location.pathname !== '/signin' || location.pathname !== '/signup') {
       return component;
     }
   }

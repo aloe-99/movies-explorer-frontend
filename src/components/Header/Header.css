@@ -20,6 +20,11 @@
 .header__link-btn {
   margin-left: auto;
   margin-right: 0;
+  box-shadow: 0px 3px 14px rgba(0, 0, 0, 0.08);
+  border-radius: 40px;
+  width: 100px;
+  height: 32px;
+  padding: 3px 3px 3px 11px;
 }
 
 .header__profile-icon {

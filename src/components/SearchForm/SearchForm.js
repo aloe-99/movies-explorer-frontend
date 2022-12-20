@@ -1,0 +1,19 @@
+import './SearchForm.css';
+
+function SearchForm(props) {
+  return (
+    <form className='search-form'>
+      <fieldset className='search-form__group'>
+        <input className='search-form__input' type='text' placeholder='Фильм' />
+        <button className='search-form__button' type='submit'>Найти</button>
+      </fieldset>
+      <label className='search-form__label'>
+        <input className='search-form__checkbox' type='checkbox' />
+        <span className='search-form__checkbox_visible'></span>
+        Короткометражка
+      </label>
+    </form>
+  );
+}
+
+export default SearchForm;

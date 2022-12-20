@@ -1,0 +1,26 @@
+.movies__card {
+  max-width: 364px;
+  border-radius: 6px;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08);
+}
+
+.movies__img {
+  width: 100%;
+}
+
+.movies__group {
+  display: flex;
+  justify-content: space-between;
+  margin: 16px 39px 16px 16px;
+}
+
+.movies__title {
+  font-size: 13px;
+}
+
+.movies__duration {
+  font-size: 11px;
+  color: #8b8b8b;
+  margin-left: 16px;
+}

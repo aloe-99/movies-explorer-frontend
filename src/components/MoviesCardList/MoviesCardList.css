@@ -1,0 +1,7 @@
+.movies {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px 16px;
+  margin: 0 70px;
+  box-sizing: border-box;
+}

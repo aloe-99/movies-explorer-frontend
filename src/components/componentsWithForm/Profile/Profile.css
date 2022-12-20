@@ -3,6 +3,39 @@
   height: 482px;
 }
 
+.form__group_profile {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid #424242;
+}
+
+.form__group_profile:last-child {
+  border: none;
+}
+
+.form__label_profile {
+  color: #fff;
+  padding: 16px 0;
+}
+
+.form__input_profile {
+  font-size: 11px;
+  width: 80%;
+  text-align: right;
+  margin-bottom: 0;
+  margin-left: auto;
+  border: none;
+}
+
+.form__input_profile:focus {
+  border: none;
+}
+
+.form__input_profile_underline-disable {
+  border: none;
+}
+
 .form__text-btn {
   background-color: #202020;
   border: none;
@@ -11,5 +44,5 @@
 }
 
 .form__text-btn:last-child {
-  margin: 0 0 70px 0;
+  margin: 0;
 }
