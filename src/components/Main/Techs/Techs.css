@@ -1,3 +1,30 @@
 .techs {
-  margin: 10px 70px;
+  width: 100%;
+  background-color: #272727;
+}
+
+.techs__header {
+  margin-top: 90px;
+}
+
+.techs__cards-row {
+  margin-top: 100px;
+}
+
+@media screen and (max-width: 1000px) {
+  .techs__cards-row {
+    margin-top: 83px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .techs__cards-row {
+    display: grid;
+    grid-template-columns: repeat(2, 98px);
+    gap: 10px;
+  }
+
+  .section__hr_techs {
+    border-color: #000;
+  }
 }

@@ -1,7 +1,26 @@
-.movies {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px 16px;
-  margin: 0 70px;
-  box-sizing: border-box;
+.show-more {
+  overflow-y: visible;
+  grid-auto-rows: auto;
+}
+
+.hide-btn {
+  visibility: hidden;
+}
+
+.movies__more-btn {
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  width: 320px;
+  padding: 9px 0;
+  border: 1px solid #424242;
+  border-radius: 6px;
+  background-color: #202020;
+  margin-bottom: 180px;
+}
+
+@media screen and (max-width: 600px) {
+  .movies__more-btn {
+    width: 240px;
+  }
 }

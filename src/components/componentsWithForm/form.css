@@ -5,14 +5,10 @@
 
 .form {
   box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  width: 396px;
-  height: 626px;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template-rows: 147px 266px 130px;
+  min-width: 396px;
   margin: 70px 0 0 0;
-  padding-bottom: 70px;
 }
 
 .form__title {
@@ -24,7 +20,31 @@
 }
 
 .form__title_position_center {
-  align-self: center;
+  align-self: start;
+  text-align: center;
+  margin: 0 0 120px 0;
+}
+
+.form__inputs {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.form__preview {
+  display: flex;
+  flex-direction: column;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+.form__buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: none;
+  padding: 0;
+  margin: 0;
 }
 
 .form__label {
@@ -42,7 +62,7 @@
   border-left: none;
   border-bottom: 1px solid #424242;
   width: 100%;
-  padding: 10px 0;
+  padding: 0 0 10px 0;
   margin-bottom: 24px;
 }
 
@@ -54,14 +74,17 @@
   color: #fff;
   background-color: #4285f4;
   width: 100%;
+  font-weight: 500;
   border: none;
   border-radius: 3px;
   padding: 14px 0;
-  margin: auto 0 16px;
+  margin: 25px 0 16px;
 }
 
 .form__text {
   color: #8b8b8b;
+  text-align: center;
+  align-self: center;
 }
 
 .form__text_color_light {
@@ -81,4 +104,33 @@
 .form__input:focus {
   outline: 0;
   border-bottom: 1px solid #4285f4;
+}
+
+@media screen and (max-width: 600px) {
+  .form {
+    margin: 0;
+    padding: 56px 10px 30px;
+    min-width: 260px;
+  }
+
+  .form__title {
+    align-self: center;
+  }
+
+  .form__logo {
+    align-self: center;
+  }
+
+  .form__btn {
+    margin-top: 0;
+    font-size: 12px;
+  }
+
+  .form__text {
+    font-size: 12px;
+  }
+
+  .form__title_position_center {
+    margin-bottom: 80px;
+  }
 }

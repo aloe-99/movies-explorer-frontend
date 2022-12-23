@@ -1,6 +1,13 @@
 .form_profile {
-  padding-bottom: 0;
-  height: 482px;
+  grid-template-rows: 2fr 3fr 1fr;
+}
+
+.form__title_profile {
+  align-self: center;
+}
+
+.form__preview_profile {
+  align-items: center;
 }
 
 .form__group_profile {
@@ -37,12 +44,21 @@
 }
 
 .form__text-btn {
+  font-size: 13px;
+  font-weight: 400;
   background-color: #202020;
   border: none;
   text-decoration: none;
-  margin: auto 0 16px;
+  margin-bottom: 16px;
 }
 
 .form__text-btn:last-child {
   margin: 0;
+}
+
+@media screen and (max-width: 600px) {
+  .form_profile {
+    grid-template-rows: 147px 266px auto;
+    width: 100%;
+  }
 }

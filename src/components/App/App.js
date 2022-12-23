@@ -10,18 +10,19 @@ import SavedMovies from '../SavedMovies/SavedMovies';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import NotFoundPage from '../NotFoundPage/NotFoundPage';
+import HeaderNav from '../HeaderNav/HeaderNav';
 
 function App() {
   const location = useLocation();
 
   function checkLocationHeader(component) {
-    if (location.pathname !== '/signin' || location.pathname !== '/signup') {
+    if (location.pathname === '/' || location.pathname === '/movies' || location.pathname === '/profile' || location.pathname === '/saved-movies') {
       return component;
     }
   }
 
   function checkLocationFooter(component) {
-    if (location.pathname === '/' || location.pathname === '/movies') {
+    if (location.pathname === '/' || location.pathname === '/movies' || location.pathname === '/saved-movies') {
       return component;
     }
   }
@@ -53,6 +54,7 @@ function App() {
         </Route>
       </Switch>
       {checkLocationFooter(<Footer />)}
+      <HeaderNav location={location} />
     </>
   );
 }

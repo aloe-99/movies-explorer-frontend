@@ -1,3 +1,7 @@
+* {
+  outline: 1px solid red;
+}
+
 .page {
   display: flex;
   flex-direction: column;
@@ -8,7 +12,8 @@
 }
 
 .link-dissolution {
-  transition: opacity 0.7s linear;
+  cursor: pointer;
+  transition: opacity 0.5s linear;
 }
 
 .link-dissolution:hover {
@@ -16,7 +21,8 @@
 }
 
 .btn-dissolution {
-  transition: opacity 0.7s linear;
+  cursor: pointer;
+  transition: opacity 0.5s linear;
 }
 
 .btn-dissolution:hover {

@@ -1,12 +1,16 @@
 import './NotFoundPage.css';
 
 function NotFoundPage() {
+  function returnHistory() {
+    return window.history.back();
+  }
+
   return (
     <div className='notfound'>
       <div className='notfound__container'>
         <span className='notfound__title'>404</span>
         <span className='notfound__subtitle'>Страница не найдена</span>
-        <a className='notfound__link' href='r.ru'>Назад</a>
+        <button className='notfound__link link-dissolution' onClick={returnHistory}>Назад</button>
       </div>
     </div>
   );

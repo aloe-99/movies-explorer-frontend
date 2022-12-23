@@ -1,8 +1,9 @@
 .movies__card {
+  cursor: pointer;
   max-width: 364px;
   border-radius: 6px;
-  box-sizing: border-box;
   box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08);
+  padding-bottom: 16px;
 }
 
 .movies__img {
@@ -12,15 +13,42 @@
 .movies__group {
   display: flex;
   justify-content: space-between;
-  margin: 16px 39px 16px 16px;
+  align-items: center;
+  margin: 16px;
 }
 
 .movies__title {
   font-size: 13px;
+  font-weight: 500;
 }
 
 .movies__duration {
   font-size: 11px;
   color: #8b8b8b;
   margin-left: 16px;
+}
+
+.movies__like-btn {
+  width: 30px;
+  height: 30px;
+  background-image: url("../../images/Movies/like-btn/like-btn.svg");
+  padding: 0;
+  border: 0;
+  background-color: #202020;
+}
+
+.movies__like-btn_active {
+  background-image: url("../../images/Movies/like-btn/like-btn_active.svg");
+}
+
+@media screen and (max-width: 600px) {
+  .movies___title {
+    font-size: 12px;
+    margin: 14px;
+  }
+
+  .movies__duration {
+    font-size: 10px;
+    margin-left: 14px;
+  }
 }

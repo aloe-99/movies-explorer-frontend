@@ -1,8 +1,7 @@
 .portfolio {
   padding-top: 0;
   margin-top: 0;
-  margin-left: 70px;
-  margin-right: 70px;
+  width: 100%;
 }
 
 .section__portfolio-links {
@@ -21,4 +20,16 @@
   color: #fff;
   font-size: 30px;
   text-decoration: none;
+}
+
+@media screen and (max-width: 1000px) {
+  .section__portfolio-link {
+    font-size: 28px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .section__portfolio-link {
+    font-size: 18px;
+  }
 }

@@ -7,7 +7,7 @@ function SearchForm(props) {
         <input className='search-form__input' type='text' placeholder='Фильм' />
         <button className='search-form__button' type='submit'>Найти</button>
       </fieldset>
-      <label className='search-form__label'>
+      <label className='search-form__label btn-dissolution'>
         <input className='search-form__checkbox' type='checkbox' />
         <span className='search-form__checkbox_visible'></span>
         Короткометражка
