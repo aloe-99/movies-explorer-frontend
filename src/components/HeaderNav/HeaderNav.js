@@ -23,9 +23,9 @@ function HeaderNav(props) {
         <Link className={checkLocation('/')} to='/' onClick={closeMenu}>Главная</Link>
         <Link className={checkLocation('/movies')} to='/movies'>Фильмы</Link>
         <Link className={checkLocation('/saved-movies')} to='/saved-movies'>Сохраненные фильмы</Link>
-        <Link className='header__link header__link-btn_nav-tab btn-dissolution' to='/profile'>
+        <Link className='header-nav__link header-nav__link-btn btn-dissolution' to='/profile'>
           <span>Аккаунт</span>
-          <img className='header__profile-icon' src={profileIcon} alt='Иконка профиля' />
+          <img className='header-nav__profile-icon' src={profileIcon} alt='Иконка профиля' />
         </Link>
       </div>
     </div>

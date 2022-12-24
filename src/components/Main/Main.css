@@ -89,6 +89,7 @@
 
 .section__card_big {
   padding: 10px 0;
+  width: 90px;
 }
 
 .section__text_center {
@@ -120,6 +121,14 @@
     font-size: 40px;
     width: 88%;
     margin-top: 320px;
+  }
+
+  .section__card {
+    min-width: 82px;
+  }
+
+  .section__card_big {
+    min-width: 84px;
   }
 
   .section__cards-row {
@@ -157,6 +166,10 @@
 
   .section__cards-row {
     margin-top: 212px;
+  }
+
+  .section__card {
+    width: 96px;
   }
 
   .section__container {

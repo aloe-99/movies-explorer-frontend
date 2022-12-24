@@ -54,8 +54,14 @@
   height: 16px;
 }
 
-.header__link-btn_nav-tab {
+.header-nav__link-btn {
   margin-top: auto;
+}
+
+.header-nav__profile-icon {
+  background-color: #313131;
+  border-radius: 50%;
+  padding: 7px;
 }
 
 @media screen and (max-width: 500px) {

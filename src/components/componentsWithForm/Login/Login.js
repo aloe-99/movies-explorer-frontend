@@ -20,7 +20,7 @@ function Login(props) {
       <fieldset className='form__buttons'>
         <button className='form__btn btn-dissolution' type='submit'>Войти</button>
         <span className='form__text'>
-          Еще не зарегестрированы?
+          Еще не зарегистрированы?
           <Link className='form__link link-dissolution' to='/signup'>Регистрация</Link>
         </span>
       </fieldset>

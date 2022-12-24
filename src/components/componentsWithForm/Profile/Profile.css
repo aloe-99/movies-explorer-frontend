@@ -1,5 +1,6 @@
 .form_profile {
   grid-template-rows: 2fr 3fr 1fr;
+  min-width: 400px;
 }
 
 .form__title_profile {
@@ -43,6 +44,10 @@
   border: none;
 }
 
+.form__group_profile_underline-disable {
+  border: none;
+}
+
 .form__text-btn {
   font-size: 13px;
   font-weight: 400;
@@ -60,5 +65,11 @@
   .form_profile {
     grid-template-rows: 147px 266px auto;
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .form_profile {
+    min-width: 100%;
   }
 }

@@ -22,7 +22,7 @@ function Register(props) {
       <fieldset className='form__buttons'>
         <button className='form__btn btn-dissolution' type='submit'>Зарегистрироваться</button>
         <span className='form__text'>
-          Уже зарегестрированы?
+          Уже зарегистрированы?
           <Link className='form__link link-dissolution' to='/signin'>Войти</Link>
         </span>
       </fieldset>

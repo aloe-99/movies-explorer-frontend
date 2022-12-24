@@ -2,6 +2,8 @@ import './MoviesCardList.css';
 import MoviesCard from "../MoviesCard/MoviesCard";
 
 function MoviesCardList(props) {
+  const isSaved = props.isSaved;
+
   const showMore = () => {
     const movies = document.querySelector('.movies');
     const btn = document.querySelector('.movies__more-btn');
@@ -12,21 +14,21 @@ function MoviesCardList(props) {
 
   return (
     <>
-      <section className='section movies'>
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-      </section>
-      <button className='movies__more-btn btn-dissolution' onClick={showMore}>Ещё</button>
+      <ul className='section movies'>
+        <MoviesCard isSaved={isSaved} />
+        <MoviesCard isSaved={isSaved} />
+        <MoviesCard isSaved={isSaved} />
+        <MoviesCard isSaved={isSaved} />
+        <MoviesCard isSaved={isSaved} />
+        <MoviesCard isSaved={isSaved} />
+        <MoviesCard isSaved={isSaved} />
+        <MoviesCard isSaved={isSaved} />
+        <MoviesCard isSaved={isSaved} />
+        <MoviesCard isSaved={isSaved} />
+        <MoviesCard isSaved={isSaved} />
+        <MoviesCard isSaved={isSaved} />
+      </ul>
+      <button className='more-btn btn-dissolution' onClick={showMore}>Ещё</button>
     </>
   );
 }
