@@ -1,0 +1,27 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #202020;
+  font-family: "Inter", Arial, sans-serif;
+  min-height: 100vh;
+  max-width: 100%;
+}
+
+.link-dissolution {
+  cursor: pointer;
+  transition: opacity 0.5s linear;
+}
+
+.link-dissolution:hover {
+  opacity: 0.7;
+}
+
+.btn-dissolution {
+  cursor: pointer;
+  transition: opacity 0.5s linear;
+}
+
+.btn-dissolution:hover {
+  opacity: 0.8;
+}

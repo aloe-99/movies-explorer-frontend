@@ -1,0 +1,83 @@
+.header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 18px 0;
+  width: 89%;
+  box-sizing: border-box;
+}
+
+.header__logo {
+  margin-right: 38px;
+}
+
+.header__auth {
+  display: flex;
+  margin-left: auto;
+}
+
+.header__link {
+  display: flex;
+  font-size: 13px;
+  align-items: center;
+  color: #fff;
+  text-decoration: none;
+  margin: 8px;
+}
+
+.header__link_active {
+  font-weight: 500;
+}
+
+.header__link-btn {
+  margin-left: auto;
+  margin-right: 0;
+  box-shadow: 0px 3px 14px rgba(0, 0, 0, 0.08);
+  border-radius: 40px;
+  justify-content: space-between;
+  width: 100px;
+  height: 32px;
+  padding: 3px 3px 3px 11px;
+}
+
+.header__auth-link {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.header__auth-btn {
+  color: #000;
+  margin-left: 30px;
+  background-color: #3ddc84;
+  padding: 8px 20px;
+  border-radius: 3px;
+}
+
+.header__profile-icon {
+  background-color: #313131;
+  border-radius: 50%;
+  padding: 7px;
+}
+
+.header__nav-btn {
+  background-color: #202020;
+  padding: 0;
+  border: none;
+  margin-left: auto;
+}
+
+@media screen and (max-width: 1000px) {
+  .header {
+    width: 92%;
+  }
+
+  .header__auth-link {
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .header__auth-btn {
+    margin-left: 14px;
+  }
+}
