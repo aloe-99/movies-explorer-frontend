@@ -23,6 +23,7 @@
 .section__container_profile {
   grid-template-columns: auto 270px;
   margin: 70px 0 0;
+  column-gap: 21%;
 }
 
 .section__container-title_profile {
@@ -38,6 +39,10 @@
 }
 
 @media screen and (max-width: 1000px) {
+  .section__container_profile {
+    column-gap: 6%;
+  }
+
   .section__container-title_profile {
     font-size: 12px;
   }
