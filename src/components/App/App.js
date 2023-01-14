@@ -22,7 +22,7 @@ function App(props) {
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [windowSize, setWindowSize] = useState(window.screen.width);
+  const [windowSize, setWindowSize] = useState(window.innerWidth);
 
   const location = useLocation();
 
@@ -43,7 +43,7 @@ function App(props) {
   }, []);
 
   const checkSize = () => {
-    setWindowSize(window.screen.width);
+    setWindowSize(window.innerWidth);
   }
 
   useEffect(() => {
@@ -73,6 +73,7 @@ function App(props) {
       })
       .catch((err) => {
         console.log(err);
+        document.querySelector('.form-error-response').textContent = err;
       })
   }
 
@@ -90,6 +91,7 @@ function App(props) {
       })
       .catch((err) => {
         console.log(err);
+        document.querySelector('.form-error-response').textContent = err;
       })
   }
 
@@ -118,12 +120,6 @@ function App(props) {
     }
   }
 
-  // function deleteToken() {
-  //   if (localStorage.getItem('jwt')) {
-  //     localStorage.removeItem('jwt');
-  //   }
-  // }
-
   return (
     <CurrentUserContext.Provider value={currentUser}>
       {checkLocationHeader(<Header location={location} windowSize={windowSize} loggedIn={loggedIn} />)}
@@ -132,12 +128,13 @@ function App(props) {
           exact path="/movies"
           loggedIn={loggedIn}
           windowSize={windowSize}
+          location={location.pathname}
           component={Movies}
         />
         <ProtectedRoute
           exact path="/saved-movies"
           loggedIn={loggedIn}
-          windowSize={windowSize}
+          location={location.pathname}
           component={SavedMovies}
         />
         <ProtectedRoute

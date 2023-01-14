@@ -13,6 +13,7 @@
 
 .form__group_profile {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   width: 100%;
   border-bottom: 1px solid #424242;
@@ -55,6 +56,11 @@
   border: none;
   text-decoration: none;
   margin-bottom: 16px;
+}
+
+.form__text-btn_disbled {
+  color: #8b8b8b;
+  opacity: 0.8;
 }
 
 .form__text-btn:last-child {

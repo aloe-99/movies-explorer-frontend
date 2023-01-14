@@ -21,9 +21,9 @@ function HeaderNav(props) {
           <img className='header-nav__close-icon' src={closePath} alt='Иконка закрытия' />
         </button>
         <Link className={checkLocation('/')} to='/' onClick={closeMenu}>Главная</Link>
-        <Link className={checkLocation('/movies')} to='/movies'>Фильмы</Link>
-        <Link className={checkLocation('/saved-movies')} to='/saved-movies'>Сохраненные фильмы</Link>
-        <Link className='header-nav__link header-nav__link-btn btn-dissolution' to='/profile'>
+        <Link className={checkLocation('/movies')} to='/movies' onClick={closeMenu}>Фильмы</Link>
+        <Link className={checkLocation('/saved-movies')} to='/saved-movies' onClick={closeMenu}>Сохраненные фильмы</Link>
+        <Link className='header-nav__link header-nav__link-btn btn-dissolution' to='/profile' onClick={closeMenu}>
           <span>Аккаунт</span>
           <img className='header-nav__profile-icon' src={profileIcon} alt='Иконка профиля' />
         </Link>

@@ -12,14 +12,14 @@ class MainApi {
   }
 
   getMovies() {
-    return fetch(`${this.baseUrl}`, {
+    return fetch(`${this.baseUrl}/movies`, {
       headers: this._injectBearerToken(this.headers)
     })
       .then(this._checkResponse);
   }
 
   postMovie(data) {
-    return fetch(`${this.baseUrl}`, {
+    return fetch(`${this.baseUrl}/movies`, {
       method: 'POST',
       headers: this._injectBearerToken(this.headers),
       body: JSON.stringify(data)
@@ -28,7 +28,7 @@ class MainApi {
   }
 
   deleteMovie(cardId) {
-    return fetch(`${this.baseUrl}/${cardId}`, {
+    return fetch(`${this.baseUrl}/movies/${cardId}`, {
       method: 'DELETE',
       headers: this._injectBearerToken(this.headers)
     })
@@ -42,10 +42,11 @@ class MainApi {
       .then(this._checkResponse);
   }
 
-  editUser() {
+  editUser(data) {
     return fetch(`${this.baseUrl}/users/me`, {
       method: 'PATCH',
-      headers: this._injectBearerToken(this.headers)
+      headers: this._injectBearerToken(this.headers),
+      body: JSON.stringify(data)
     })
       .then(this._checkResponse);
   }
@@ -62,6 +63,7 @@ class MainApi {
 export const MainAPI = new MainApi({
   baseUrl: 'https://api.movies.aloe.nomoredomains.club',
   headers: {
+    'Accept': 'application/json',
     'Content-type': 'application/json'
   }
 });

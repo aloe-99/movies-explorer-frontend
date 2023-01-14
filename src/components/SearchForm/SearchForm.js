@@ -1,4 +1,5 @@
 import './SearchForm.css';
+// import { customValidator } from '../../../utils/CustomValidator';
 
 function SearchForm(props) {
   const { onSubmit } = props;
@@ -12,7 +13,7 @@ function SearchForm(props) {
   }
 
   return (
-    <form className='search-form' onSubmit={onSubmit}>
+    <form className='search-form' onSubmit={onSubmit} noValidate>
       <fieldset className='search-form__group'>
         <input className='search-form__input' type='text' placeholder='Фильм' id='movie-title' required />
         <button className='search-form__button btn-dissolution' type='submit' onClick={saveReq}>Найти</button>

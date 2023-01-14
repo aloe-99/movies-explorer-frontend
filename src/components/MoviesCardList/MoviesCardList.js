@@ -1,13 +1,24 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import './MoviesCardList.css';
 import MoviesCard from "../MoviesCard/MoviesCard";
 import { MainAPI } from '../../utils/MainApi';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 function MoviesCardList(props) {
-  const { movies, windowSize } = props;
+  const { movies, onCardDel, onSaveCard, windowSize, location } = props;
   const [itemsToShow, setItemsToShow] = useState(0);
+  const [savedMovies, setSavedMovies] = useState([]);
+
+  const currentUser = useContext(CurrentUserContext);
 
   useEffect(() => {
+    MainAPI.getMovies()
+      .then((res) => {
+        setSavedMovies(res);
+      });
+    if (location.pathname === '/saved-movies') {
+      setItemsToShow(movies.length);
+    }
     if (windowSize >= 1000) {
       setItemsToShow(12);
     }
@@ -28,23 +39,28 @@ function MoviesCardList(props) {
     }
   }
 
-  function saveCard(card) {
-    MainAPI.postMovie(card);
-  }
-
-  function delCard(card) {
-    MainAPI.deleteMovie(card.id);
-  }
-
   function renderMovieCard(movie) {
-    return (
-      <MoviesCard
-        movie={movie}
-        isSaved={false}
-        onCardSave={saveCard}
-        onCardDel={delCard}
-      />
-    )
+    if (savedMovies.some(item => item.movieId === movie.id && currentUser._id === item.owner)) {
+      return (
+        <MoviesCard
+          movie={movie}
+          onCardSave={onSaveCard}
+          onCardDel={onCardDel}
+          location={location}
+          isSaved={true}
+        />
+      )
+    } else {
+      return (
+        <MoviesCard
+          movie={movie}
+          onCardSave={onSaveCard}
+          onCardDel={onCardDel}
+          location={location}
+          isSaved={false}
+        />
+      )
+    }
   }
 
   return (
@@ -56,7 +72,7 @@ function MoviesCardList(props) {
           })
         }
       </ul>
-      {itemsToShow < movies.length ? <button className='more-btn btn-dissolution' onClick={showMore}>Ещё</button> : ''}
+      {itemsToShow < movies.length && location.pathname === '/movies' ? <button className='more-btn btn-dissolution' onClick={showMore}>Ещё</button> : ''}
     </>
   );
 }
