@@ -19,6 +19,7 @@ function SavedMovies(props) {
         .then((res) => {
           if (res.length !== 0) {
             const moviesData = res.filter(item => item.owner === currentUser._id);
+            localStorage.setItem('savedMovies', JSON.stringify(moviesData));
             if (moviesData.length !== 0) {
               setResultBlock(<MoviesCardList location={location} movies={moviesData} onCardDel={handleCardDel} />);
             } else {
@@ -32,6 +33,24 @@ function SavedMovies(props) {
     moviesRender();
   }, [renderState]);
 
+  function filterMovies(data, text, checkbox) {
+    if (data.length === 0) {
+      return setResultBlock(<span className='section__text section__subtitle'>Перейдите во вкладку &#171;фильмы&#187;, чтобы добавить понравившиеся фильмы на эту страницу.</span>);
+    }
+    const moviesData = data.filter((movie) => {
+      return (movie.nameRU.toLowerCase().includes(text.toLowerCase()) || movie.nameEN.toLowerCase().includes(text.toLowerCase()));
+    });
+
+    if (checkbox === true) {
+      const shortMoviesData = moviesData.filter((movie) => {
+        return movie.duration < 40;
+      })
+      return shortMoviesData;
+    } else {
+      return moviesData;
+    }
+  }
+
   function handleCardDel(card) {
     MainAPI.deleteMovie(card.movieId)
       .then((res) => setRenderState(res.movieId));
@@ -39,6 +58,15 @@ function SavedMovies(props) {
 
   function sortMovies(evt) {
     evt.preventDefault();
+    const savedMoviesList = JSON.parse(localStorage.getItem('savedMovies'));
+    const reqText = localStorage.getItem('reqText');
+    const reqCheckbox = localStorage.getItem('reqCheckbox');
+    const savedMoviesData = filterMovies(savedMoviesList, reqText, reqCheckbox);
+    if (savedMoviesData.length !== 0) {
+      setResultBlock(<MoviesCardList location={location} movies={savedMoviesData} onCardDel={handleCardDel} />);
+    } else {
+      setResultBlock(<span className='section__text section__subtitle'>Ничего не найдено</span>);
+    }
   }
 
   return (

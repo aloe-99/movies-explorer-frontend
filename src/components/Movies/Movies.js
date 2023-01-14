@@ -12,15 +12,33 @@ function Movies(props) {
   const [isLoading, setIsLoading] = useState(false);
   const [resultBlock, setResultBlock] = useState(null);
 
+  function filterMovies(data, text, checkbox) {
+    const moviesData = data.filter((movie) => {
+      return (movie.nameRU.toLowerCase().includes(text.toLowerCase()) || movie.nameEN.toLowerCase().includes(text.toLowerCase()));
+    });
+
+    if (checkbox === true) {
+      const shortMoviesData = moviesData.filter((movie) => {
+        return movie.duration < 40;
+      })
+      return shortMoviesData;
+    } else {
+      return moviesData;
+    }
+  }
+
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
     setIsLoading(true);
     moviesAPI.getInitialMovies()
       .then((res) => {
-        localStorage.setItem('initialMovies', JSON.stringify(res));
+        const reqText = localStorage.getItem('reqText');
+        const reqCheckbox = localStorage.getItem('reqCheckbox');
+        const moviesData = filterMovies(res, reqText, reqCheckbox);
+        localStorage.setItem('initialMovies', JSON.stringify(moviesData));
         setIsLoading(false);
-        setResultBlock(<MoviesCardList movies={res} location={location} windowSize={windowSize} onSaveCard={handleSaveCard} onCardDel={handleCardDel} />);
+        setResultBlock(<MoviesCardList movies={moviesData} location={location} windowSize={windowSize} onSaveCard={handleSaveCard} onCardDel={handleCardDel} />);
       })
       .catch(() => {
         setIsLoading(false);

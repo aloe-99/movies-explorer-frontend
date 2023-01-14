@@ -1,5 +1,4 @@
 import './SearchForm.css';
-// import { customValidator } from '../../../utils/CustomValidator';
 
 function SearchForm(props) {
   const { onSubmit } = props;
