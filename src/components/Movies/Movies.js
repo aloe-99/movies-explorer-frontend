@@ -36,9 +36,14 @@ function Movies(props) {
         const reqText = localStorage.getItem('reqText');
         const reqCheckbox = localStorage.getItem('reqCheckbox');
         const moviesData = filterMovies(res, reqText, reqCheckbox);
-        localStorage.setItem('initialMovies', JSON.stringify(moviesData));
-        setIsLoading(false);
-        setResultBlock(<MoviesCardList movies={moviesData} location={location} windowSize={windowSize} onSaveCard={handleSaveCard} onCardDel={handleCardDel} />);
+        if (moviesData.length !== 0) {
+          localStorage.setItem('initialMovies', JSON.stringify(moviesData));
+          setIsLoading(false);
+          setResultBlock(<MoviesCardList movies={moviesData} location={location} windowSize={windowSize} onSaveCard={handleSaveCard} onCardDel={handleCardDel} />);
+        } else {
+          setIsLoading(false);
+          setResultBlock(<span className='section__text section__subtitle'>Ничего не найдено</span>);
+        }
       })
       .catch(() => {
         setIsLoading(false);
