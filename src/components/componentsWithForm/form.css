@@ -80,6 +80,10 @@
   margin: 6px 0;
 }
 
+.form__error-text_complete {
+  color: #3ddc84;
+}
+
 .form-error-response {
   text-align: center;
 }

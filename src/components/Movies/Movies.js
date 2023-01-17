@@ -9,6 +9,8 @@ import { MainAPI } from '../../utils/MainApi';
 function Movies(props) {
   const { windowSize, location } = props;
 
+  const searchInput = document.querySelector('.search-form__input');
+
   const [isLoading, setIsLoading] = useState(false);
   const [resultBlock, setResultBlock] = useState(null);
 
@@ -16,11 +18,10 @@ function Movies(props) {
     const moviesData = data.filter((movie) => {
       return (movie.nameRU.toLowerCase().includes(text.toLowerCase()) || movie.nameEN.toLowerCase().includes(text.toLowerCase()));
     });
-
-    if (checkbox === true) {
+    if (checkbox === 'true') {
       const shortMoviesData = moviesData.filter((movie) => {
         return movie.duration < 40;
-      })
+      });
       return shortMoviesData;
     } else {
       return moviesData;
@@ -30,30 +31,32 @@ function Movies(props) {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    setIsLoading(true);
-    moviesAPI.getInitialMovies()
-      .then((res) => {
-        const reqText = localStorage.getItem('reqText');
-        const reqCheckbox = localStorage.getItem('reqCheckbox');
-        const moviesData = filterMovies(res, reqText, reqCheckbox);
-        if (moviesData.length !== 0) {
-          localStorage.setItem('initialMovies', JSON.stringify(moviesData));
+    if (searchInput.validity.valid) {
+      setIsLoading(true);
+      moviesAPI.getInitialMovies()
+        .then((res) => {
+          const reqText = localStorage.getItem('reqText');
+          const reqCheckbox = localStorage.getItem('reqCheckbox');
+          const moviesData = filterMovies(res, reqText, reqCheckbox);
+          if (moviesData.length !== 0) {
+            localStorage.setItem('initialMovies', JSON.stringify(moviesData));
+            setIsLoading(false);
+            setResultBlock(<MoviesCardList movies={moviesData} location={location} windowSize={windowSize} onSaveCard={handleSaveCard} onCardDel={handleCardDel} />);
+          } else {
+            setIsLoading(false);
+            setResultBlock(<span className='section__text section__subtitle'>Ничего не найдено</span>);
+          }
+        })
+        .catch(() => {
           setIsLoading(false);
-          setResultBlock(<MoviesCardList movies={moviesData} location={location} windowSize={windowSize} onSaveCard={handleSaveCard} onCardDel={handleCardDel} />);
-        } else {
-          setIsLoading(false);
-          setResultBlock(<span className='section__text section__subtitle'>Ничего не найдено</span>);
-        }
-      })
-      .catch(() => {
-        setIsLoading(false);
-        setResultBlock(<span className='section__text section__subtitle'>
-          Во время запроса произошла ошибка.
-          Возможно, проблема с соединением или сервер недоступен.
-          Подождите немного и попробуйте ещё раз.
-        </span>
-        )
-      });
+          setResultBlock(<span className='section__text section__subtitle'>
+            Во время запроса произошла ошибка.
+            Возможно, проблема с соединением или сервер недоступен.
+            Подождите немного и попробуйте ещё раз.
+          </span>
+          )
+        });
+    }
   }
 
   useEffect(() => {
@@ -116,7 +119,7 @@ function Movies(props) {
 
   return (
     <>
-      <SearchForm onSubmit={handleSubmit} />
+      <SearchForm onSubmit={handleSubmit} location={location.pathname} />
       {isLoading ? <Preloader /> : null}
       {resultBlock}
     </>

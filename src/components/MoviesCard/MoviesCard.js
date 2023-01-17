@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import './MoviesCard.css';
 
 function MoviesCard(props) {
@@ -10,6 +9,10 @@ function MoviesCard(props) {
     } else {
       onCardSave(movie, evt.target);
     }
+  }
+
+  function handleOpenTrailer() {
+    window.open(movie.trailerLink);
   }
 
   function handleClickDelBtn() {
@@ -29,12 +32,12 @@ function MoviesCard(props) {
 
   return (
     <li className='movies__card' key={movie._id}>
-      <img className='movies__img' src={movie.image.url ? `https://api.nomoreparties.co/${movie.image.url}` : `${movie.image}`} alt='Кадр из фильма' />
+      <img className='movies__img' src={movie.image.url ? `https://api.nomoreparties.co/${movie.image.url}` : `${movie.image}`} alt='Кадр из фильма' onClick={handleOpenTrailer} />
       <div className='movies__group'>
         <span className='movies__title'>{movie.nameRU}</span>
         {checkSaved()}
       </div>
-      <span className='movies__duration'>{`${Math.round(movie.duration / 60)}ч ${movie.duration % 60}м`}</span>
+      <span className='movies__duration'>{`${Math.floor(movie.duration / 60)}ч ${movie.duration % 60}м`}</span>
     </li>
   );
 }

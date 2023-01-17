@@ -69,7 +69,7 @@ function App(props) {
   function handleRegister() {
     auth.register(email, password, userName)
       .then(() => {
-        props.history.push('/signin');
+        handleLogin();
       })
       .catch((err) => {
         console.log(err);
@@ -97,10 +97,20 @@ function App(props) {
 
   function handleLogout() {
     localStorage.removeItem('jwt');
+    localStorage.removeItem('user');
+    localStorage.removeItem('savedMovies');
     props.history.push('/');
+    setCurrentUser({});
+    setUserName('')
     setLoggedIn(false);
     if (localStorage.getItem('initialMovies')) {
       localStorage.removeItem('initialMovies');
+    }
+    if (localStorage.getItem('reqText')) {
+      localStorage.removeItem('reqText');
+    }
+    if (localStorage.getItem('reqCheckbox')) {
+      localStorage.removeItem('reqCheckbox');
     }
   }
 
@@ -148,7 +158,7 @@ function App(props) {
             loggedIn={loggedIn}
           />
         </Route>
-        <Route path="/signin">
+        <Route exact path="/signin">
           <Login
             email={email}
             password={password}
@@ -157,7 +167,7 @@ function App(props) {
             onLogin={handleLogin}
           />
         </Route>
-        <Route path="/signup">
+        <Route exact path="/signup">
           <Register
             userName={userName}
             email={email}

@@ -3,6 +3,7 @@ import '../form.css';
 import { Link, withRouter } from 'react-router-dom';
 import logoPath from '../../../images/Header/logo.svg';
 import { customValidator } from '../../../utils/CustomValidator';
+import { emailRegExp, nameRegExp } from '../../../utils/regExp';
 
 function Register(props) {
   const { userName, email, password, setUserName, setEmail, setPassword, onRegister } = props;
@@ -44,10 +45,10 @@ function Register(props) {
       </fieldset>
       <fieldset className='form__inputs'>
         <label className='form__label' htmlFor='name'>Имя</label>
-        <input className='form__input' type='text' id='name' value={userName} onChange={onChangeName} pattern='^[a-zA-Zа-яА-ЯёЁ\-]+$' required />
+        <input className='form__input' type='text' id='name' value={userName} onChange={onChangeName} pattern={nameRegExp} required />
         <span className='form__error-text form-error-name'></span>
         <label className='form__label' htmlFor='email'>E-mail</label>
-        <input className='form__input' type='email' id='email' value={email} onChange={onChangeEmail} required />
+        <input className='form__input' type='email' id='email' value={email} onChange={onChangeEmail} pattern={emailRegExp} required />
         <span className='form__error-text form-error-email'></span>
         <label className='form__label' htmlFor='password'>Пароль</label>
         <input className='form__input' type='password' name='password' id='password' value={password} onChange={onChangePassword} required />
