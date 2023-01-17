@@ -45,7 +45,7 @@ function SavedMovies(props) {
       return (movie.nameRU.toLowerCase().includes(text.toLowerCase()) || movie.nameEN.toLowerCase().includes(text.toLowerCase()));
     });
 
-    if (checkbox === 'true') {
+    if (checkbox === true) {
       const shortMoviesData = moviesData.filter((movie) => {
         return movie.duration < 40;
       })
@@ -64,6 +64,7 @@ function SavedMovies(props) {
     evt.preventDefault();
     if (searchInput.validity.valid) {
       const savedMoviesList = JSON.parse(localStorage.getItem('savedMovies'));
+      console.log(savedReqCheckbox);
       const savedMoviesData = filterMovies(savedMoviesList, savedReqText, savedReqCheckbox);
       if (savedMoviesData.length !== 0) {
         setResultBlock(<MoviesCardList location={location} movies={savedMoviesData} onCardDel={handleCardDel} />);

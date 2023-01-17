@@ -23,7 +23,7 @@ function SearchForm(props) {
     if (searchInput.validity.valid) {
       errorField.textContent = '';
       setSavedReqText(reqText.value);
-      setSavedReqCheckbox(reqCheckbox.value);
+      setSavedReqCheckbox(reqCheckbox.checked);
     } else {
       errorField.textContent = 'Нужно ввести ключевое слово';
     }
