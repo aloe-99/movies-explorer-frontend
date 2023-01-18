@@ -1,34 +1,78 @@
+import { useEffect, useState, useContext } from 'react';
 import './MoviesCardList.css';
 import MoviesCard from "../MoviesCard/MoviesCard";
+import { MainAPI } from '../../utils/MainApi';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 function MoviesCardList(props) {
-  const isSaved = props.isSaved;
+  const { movies, onCardDel, onSaveCard, windowSize, location } = props;
+  const [itemsToShow, setItemsToShow] = useState(0);
+  const [savedMovies, setSavedMovies] = useState([]);
 
-  const showMore = () => {
-    const movies = document.querySelector('.movies');
-    const btn = document.querySelector('.movies__more-btn');
+  const currentUser = useContext(CurrentUserContext);
 
-    movies.classList.add('show-more');
-    btn.classList.add('hide-btn');
+  useEffect(() => {
+    MainAPI.getMovies()
+      .then((res) => {
+        setSavedMovies(res);
+      });
+    if (location.pathname === '/saved-movies') {
+      setItemsToShow(movies.length);
+    }
+    if (windowSize >= 1000) {
+      setItemsToShow(12);
+    }
+    if (windowSize < 1000) {
+      setItemsToShow(8);
+    }
+    if (windowSize < 600) {
+      setItemsToShow(5);
+    }
+  }, [windowSize])
+
+  function showMore() {
+    if (windowSize >= 1000) {
+      setItemsToShow(itemsToShow + 3);
+    }
+    if (windowSize < 1000) {
+      setItemsToShow(itemsToShow + 2);
+    }
+  }
+
+  function renderMovieCard(movie) {
+    if (savedMovies.some(item => item.movieId === movie.id && currentUser._id === item.owner)) {
+      return (
+        <MoviesCard
+          movie={movie}
+          onCardSave={onSaveCard}
+          onCardDel={onCardDel}
+          location={location}
+          isSaved={true}
+        />
+      )
+    } else {
+      return (
+        <MoviesCard
+          movie={movie}
+          onCardSave={onSaveCard}
+          onCardDel={onCardDel}
+          location={location}
+          isSaved={false}
+        />
+      )
+    }
   }
 
   return (
     <>
       <ul className='section movies'>
-        <MoviesCard isSaved={isSaved} />
-        <MoviesCard isSaved={isSaved} />
-        <MoviesCard isSaved={isSaved} />
-        <MoviesCard isSaved={isSaved} />
-        <MoviesCard isSaved={isSaved} />
-        <MoviesCard isSaved={isSaved} />
-        <MoviesCard isSaved={isSaved} />
-        <MoviesCard isSaved={isSaved} />
-        <MoviesCard isSaved={isSaved} />
-        <MoviesCard isSaved={isSaved} />
-        <MoviesCard isSaved={isSaved} />
-        <MoviesCard isSaved={isSaved} />
+        {
+          movies.slice(0, itemsToShow).map((movie) => {
+            return renderMovieCard(movie);
+          })
+        }
       </ul>
-      <button className='more-btn btn-dissolution' onClick={showMore}>Ещё</button>
+      {itemsToShow < movies.length && location.pathname === '/movies' ? <button className='more-btn btn-dissolution' onClick={showMore}>Ещё</button> : ''}
     </>
   );
 }
