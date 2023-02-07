@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Switch, Route, withRouter, useLocation } from 'react-router-dom';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import NotLoggedInRoute from '../NotLoggedInRoute/NotLoggedInRoute';
 import './App.css';
 import Main from '../Main/Main';
 import Login from '../componentsWithForm/Login/Login';
@@ -158,26 +159,26 @@ function App(props) {
             loggedIn={loggedIn}
           />
         </Route>
-        <Route exact path="/signin">
-          <Login
-            email={email}
-            password={password}
-            setEmail={setEmail}
-            setPassword={setPassword}
-            onLogin={handleLogin}
-          />
-        </Route>
-        <Route exact path="/signup">
-          <Register
-            userName={userName}
-            email={email}
-            password={password}
-            setUserName={setUserName}
-            setEmail={setEmail}
-            setPassword={setPassword}
-            onRegister={handleRegister}
-          />
-        </Route>
+        <NotLoggedInRoute exact path="/signin"
+          component={Login}
+          loggedIn={loggedIn}
+          email={email}
+          password={password}
+          setEmail={setEmail}
+          setPassword={setPassword}
+          onLogin={handleLogin}
+        />
+        <NotLoggedInRoute exact path="/signup"
+          component={Register}
+          loggedIn={loggedIn}
+          userName={userName}
+          email={email}
+          password={password}
+          setUserName={setUserName}
+          setEmail={setEmail}
+          setPassword={setPassword}
+          onRegister={handleRegister}
+        />
         <Route path="*">
           <NotFoundPage />
         </Route>
