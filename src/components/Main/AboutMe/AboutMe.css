@@ -11,6 +11,7 @@
 .section__profile-photo {
   justify-self: end;
   width: 270px;
+  border-radius: 5%;
 }
 
 .section__profile-link {
